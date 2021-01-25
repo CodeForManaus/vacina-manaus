@@ -11,6 +11,7 @@
         </script>
 
         <meta charset="UTF-8"/>
+
         <title>#VacinaManaus - Informações sobre a vacinação contra COVID-19 em Manaus</title>
 
         <meta name="description" content="Informações sobre a vacinação contra COVID-19 em Manaus">
@@ -24,63 +25,51 @@
         <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">#VacinaManaus</a>
+                <span class="navbar-text">
+                  Última atualização dos dados: 24/01/2021</a>
+                </span>
+              </div>
             </div>
-          </nav>
+        </nav>
+        
+        <div class="jumbotron">
+            <div class="chart-div">
+                <figure class="highcharts-figure">
+                    <div id="service-group-count-chart"></div>
+                </figure>
+    
+                <figure class="highcharts-figure">
+                    <div id="vaccination-site-count-chart"></div>
+                </figure>
+            </div>
+            
+            <div class="chart-div">
+                <figure class="highcharts-figure">
+                    <div id="area-count-chart"></div>
+                </figure>
+    
+                <figure class="highcharts-figure">
+                    <div id="vaccine-date-count-chart"></div>
+                </figure>
+            </div>
+            
+            <div class="chart-div">
+                <figure class="highcharts-figure">
+                    <div id="priority-group-count-chart"></div>
+                </figure>
+            </div>
+        </div>
 
-        <figure class="highcharts-figure">
-            <div id="service-group-count-chart"></div>
-        </figure>
-
-        <figure class="highcharts-figure">
-            <div id="vaccination-site-count-chart"></div>
-        </figure>
-
-        <figure class="highcharts-figure">
-            <div id="area-count-chart"></div>
-        </figure>
-
-        <figure class="highcharts-figure">
-            <div id="vaccine-date-count-chart"></div>
-        </figure>
-
-        <figure class="highcharts-figure">
-            <div id="priority-group-count-chart"></div>
-        </figure>
+        <footer class="container">
+            <p>&copy; #VacinaManaus 2021 | <a href="https://github.com/pvfrota/pvfrota.github.io/tree/master/vacina-manaus">GitHub</p>
+        </footer>
+        
     </body>
 
 
