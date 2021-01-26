@@ -1,4 +1,4 @@
-var defaultData = 'https://raw.githubusercontent.com/pvfrota/pvfrota.github.io/master/vacina-manaus/db/service_group_count.csv';
+var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/service_group_count.csv';
 
 function serviceGroupCount() {
     Highcharts.chart('service-group-count-chart', {

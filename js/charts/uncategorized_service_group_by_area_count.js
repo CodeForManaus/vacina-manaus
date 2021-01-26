@@ -1,4 +1,4 @@
-var defaultData = 'https://raw.githubusercontent.com/pvfrota/pvfrota.github.io/master/vacina-manaus/db/uncategorized_service_group_by_area_count.csv';
+var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/uncategorized_service_group_by_area_count.csv';
 
 function uncategorizedServiceGroupByAreaCount() {
     Highcharts.chart('uncategorized-service-group-by-area-count', {

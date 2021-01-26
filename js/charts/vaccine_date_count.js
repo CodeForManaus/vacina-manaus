@@ -1,4 +1,4 @@
-var defaultData = 'https://raw.githubusercontent.com/pvfrota/pvfrota.github.io/master/vacina-manaus/db/vaccine_date_count.csv';
+var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccine_date_count.csv';
 
 function vaccineDateCount() {
     Highcharts.chart('vaccine-date-count-chart', {
