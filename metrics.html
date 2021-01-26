@@ -52,40 +52,55 @@
               </div>
             </div>
         </nav>
+        <div class="chart-div">
+            <figure class="highcharts-figure">
+                <div id="vaccination-count-statistics-chart"></div>
+            </figure>
+
+            <figure class="highcharts-figure">
+                <div id="service-group-count-chart"></div>
+            </figure>
+
+            <figure class="highcharts-figure">
+                <div id="vaccination-site-count-chart"></div>
+            </figure>
         
-        <main role="main">
-            <div class="jumbotron">
-                <div class="container">
-                <h1 class="display-3" id="vaccine-count">0 vacinas aplicadas até o momento</h1>
-                <p id="remaining-vaccine-count">Ainda restam aproximadamente <b>0</b> pessoas a serem vacinadas em Manaus</p>
-                <p><a class="btn btn-primary btn-lg" href="./metrics.html" role="button">Veja mais dados sobre a vacinação &raquo;</a></p>
-                </div>
-            </div>
+            <figure class="highcharts-figure">
+                <div id="area-count-chart"></div>
+            </figure>
+
+            <figure class="highcharts-figure">
+                <div id="uncategorized-service-group-by-vaccination-site-percent"></div>
+            </figure>
+
+            <figure class="highcharts-figure">
+                <div id="uncategorized-service-group-by-area-count"></div>
+            </figure>
         
-            <div class="container">
-                <div class="row">
-                <div class="col-md-6">
-                    <h2>Ritmo atual de vacinação</h2>
-                    <p id="vaccine-rate">Foram aplicadas, em média <b>0</b> vacinas nos últimos <b>0</b> dias</p>
-                    <p><a class="btn btn-secondary" href="./metrics.html" role="button">Veja mais dados sobre a vacinação &raquo;</a></p>
-                </div>
-                <div class="col-md-6">
-                    <h2>Tendência de conclusão</h2>
-                    <p id="vaccine-trend">No ritmo atual de vacinação, demoraríamos <b>0</b> dias para concluir a vacinação.</p>
-                    <p><a class="btn btn-secondary" href="./metrics.html" role="button">Veja mais dados sobre a vacinação &raquo;</a></p>
-                </div>
-                </div>
-        
-                <hr>
-            </div>
-        </main>
+            <figure class="highcharts-figure">
+                <div id="vaccine-date-count-chart"></div>
+            </figure>
+
+            <figure class="highcharts-figure">
+                <div id="priority-group-count-chart"></div>
+            </figure>
+        </div>
 
         <footer class="container">
             <p>&copy; #VacinaManaus 2021 | <a href="https://github.com/pvfrota/vacina-manaus">GitHub</p>
         </footer>
+        
     </body>
 
-    <script src="js/main.js"></script>
+
+    <script src="js/charts/area_count.js"></script>
+    <script src="js/charts/priority_group_count.js"></script>
+    <script src="js/charts/service_group_count.js"></script>
+    <script src="js/charts/uncategorized_service_group_by_area_count.js"></script>
+    <script src="js/charts/uncategorized_service_group_by_vaccination_site_percent.js"></script>
+    <script src="js/charts/vaccination_count_statistics.js"></script>
+    <script src="js/charts/vaccination_site_count.js"></script>
+    <script src="js/charts/vaccine_date_count.js"></script>
 
 </html>
 
