@@ -11,8 +11,11 @@ $(document).ready(function() {
     var remainingVaccineCount = 0;
 
     var daysToAvg = 3;
+    var vaccineTarget = 70; //%
 
     $('#last-update').text(lastUpdate);
+    $('#vaccine-target').text(vaccineTarget);
+    $('#vaccine-target2').text(vaccineTarget);
 
     $.ajax({
         url:'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccination_count_statistics.csv',
@@ -21,10 +24,12 @@ $(document).ready(function() {
         success: function(data){
             let vaccinationStatistics = data.split('\n')[1].split(',');
             vaccineCount = parseInt(vaccinationStatistics[1]);
-            remainingVaccineCount = parseInt(vaccinationStatistics[2]);
+            manausEstimatedPopulation = parseInt(vaccinationStatistics[3]);
+            remainingVaccineCount = manausEstimatedPopulation*vaccineTarget/100-vaccineCount;
 
             $('#vaccine-count').text(vaccineCount);
             $('#remaining-vaccine-count').text(remainingVaccineCount);
+            $('#manaus-estimated-population').text(manausEstimatedPopulation);
         }
     })
 
