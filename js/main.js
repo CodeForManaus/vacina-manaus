@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    var lastUpdate = '26/01/2021';
+
     var curDate = new Date().setHours(0,0,0,0);
 
     var totalVaccinationInPeriod = 0;
@@ -9,6 +11,8 @@ $(document).ready(function() {
     var remainingVaccineCount = 0;
 
     var daysToAvg = 3;
+
+    $('#last-update').text(lastUpdate);
 
     $.ajax({
         url:'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccination_count_statistics.csv',
