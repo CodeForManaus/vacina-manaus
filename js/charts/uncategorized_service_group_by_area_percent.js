@@ -1,12 +1,12 @@
-var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/uncategorized_service_group_by_area_count.csv';
+var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/uncategorized_service_group_by_area_percent.csv';
 
-function uncategorizedServiceGroupByAreaCount() {
-    Highcharts.chart('uncategorized-service-group-by-area-count', {
+function uncategorizedServiceGroupByAreaPercent() {
+    Highcharts.chart('uncategorized-service-group-by-area-percent', {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Quantidade de categorizados como "outros" por zona de Manaus'
+            text: 'Porcentagem de categorizados como "outros" por zona de Manaus'
         },
         accessibility: {
             announceNewData: {
@@ -29,4 +29,4 @@ function uncategorizedServiceGroupByAreaCount() {
 }
 
 // Create the chart
-uncategorizedServiceGroupByAreaCount();
+uncategorizedServiceGroupByAreaPercent();
