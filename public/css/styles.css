@@ -1,0 +1,13 @@
+@media (min-width:760px) {
+    .chart-div .highcharts-figure {
+        float: left;
+    }
+
+    .highcharts-figure {
+        width: 50%; height: 100%;
+    }
+
+    footer {
+        display: inline-block;
+    }
+}
