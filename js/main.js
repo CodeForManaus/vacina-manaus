@@ -18,7 +18,7 @@ $(document).ready(function() {
     $('#vaccine-target2').text(vaccineTarget);
 
     $.ajax({
-        url:'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccination_count_statistics.csv',
+        url:'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccination_count_statistics.csv',
         type:'get',
         dataType:'text',
         success: function(data){
@@ -34,7 +34,7 @@ $(document).ready(function() {
     })
 
     $.ajax({
-        url:'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccine_date_count.csv',
+        url:'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccine_date_count.csv',
         type:'get',
         dataType:'text',
         success: function(data){

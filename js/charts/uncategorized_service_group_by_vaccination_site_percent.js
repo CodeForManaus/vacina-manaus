@@ -1,4 +1,4 @@
-var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/uncategorized_service_group_by_vaccination_site_percent.csv';
+var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/uncategorized_service_group_by_vaccination_site_percent.csv';
 
 function uncategorizedServiceGroupByVaccinationSitePercent() {
     Highcharts.chart('uncategorized-service-group-by-vaccination-site-percent', {
