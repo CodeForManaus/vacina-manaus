@@ -1,4 +1,4 @@
-var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccination_site_count.csv';
+var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccination_site_count.csv';
 
 function vaccinationSiteCount() {
     Highcharts.chart('vaccination-site-count-chart', {

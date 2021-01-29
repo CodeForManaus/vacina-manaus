@@ -1,4 +1,4 @@
-var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/priority_group_count.csv';
+var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/priority_group_count.csv';
 
 function priorityGroupCount() {
     Highcharts.chart('priority-group-count-chart', {
