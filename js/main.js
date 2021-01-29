@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var lastUpdate = '27/01/2021';
+    var lastUpdate = '28/01/2021';
 
     var curDate = new Date().setHours(0,0,0,0);
 
