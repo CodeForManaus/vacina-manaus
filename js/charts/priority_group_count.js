@@ -3,7 +3,7 @@ var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus
 function priorityGroupCount() {
     Highcharts.chart('priority-group-count-chart', {
         chart: {
-            type: 'pie'
+            type: 'bar'
         },
         title: {
             text: 'Vacinas aplicadas por grupo prioritário'

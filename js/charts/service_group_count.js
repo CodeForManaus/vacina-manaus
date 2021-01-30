@@ -3,7 +3,7 @@ var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus
 function serviceGroupCount() {
     Highcharts.chart('service-group-count-chart', {
         chart: {
-            type: 'pie'
+            type: 'bar'
         },
         title: {
             text: 'Vacinas aplicadas por grupo de atendimento'
