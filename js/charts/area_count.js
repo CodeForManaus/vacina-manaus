@@ -3,7 +3,7 @@ var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus
 function areaCountChart() {
     Highcharts.chart('area-count-chart', {
         chart: {
-            type: 'pie'
+            type: 'bar'
         },
         title: {
             text: 'Vacinas aplicadas por zona (área) de Manaus'

@@ -3,7 +3,7 @@ var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus
 function vaccinationSiteCount() {
     Highcharts.chart('vaccination-site-count-chart', {
         chart: {
-            type: 'pie'
+            type: 'bar'
         },
         title: {
             text: 'Vacinas aplicadas por local de vacinação'
