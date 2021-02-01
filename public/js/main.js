@@ -16,17 +16,6 @@ $(document).ready(function() {
     $('#vaccine-target2').text(vaccineTarget);
 
     $.ajax({
-        url:'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/last_update_date.csv',
-        type:'get',
-        dataType:'text',
-        success: function(data){
-            let lastUpdate = data.split('\n')[1];
-
-            $('#last-update').text(lastUpdate);
-        }
-    })
-
-    $.ajax({
         url:'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccination_count_statistics.csv',
         type:'get',
         dataType:'text',
