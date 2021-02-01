@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-    var lastUpdate = '26/01/2021';
-
     var curDate = new Date().setHours(0,0,0,0);
 
     var totalVaccinationInPeriod = 0;
@@ -13,12 +11,23 @@ $(document).ready(function() {
     var daysToAvg = 3;
     var vaccineTarget = 70; //%
 
-    $('#last-update').text(lastUpdate);
+    
     $('#vaccine-target').text(vaccineTarget);
     $('#vaccine-target2').text(vaccineTarget);
 
     $.ajax({
-        url:'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccination_count_statistics.csv',
+        url:'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/last_update_date.csv',
+        type:'get',
+        dataType:'text',
+        success: function(data){
+            let lastUpdate = data.split('\n')[1];
+
+            $('#last-update').text(lastUpdate);
+        }
+    })
+
+    $.ajax({
+        url:'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccination_count_statistics.csv',
         type:'get',
         dataType:'text',
         success: function(data){
@@ -34,7 +43,7 @@ $(document).ready(function() {
     })
 
     $.ajax({
-        url:'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccine_date_count.csv',
+        url:'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccine_date_count.csv',
         type:'get',
         dataType:'text',
         success: function(data){

@@ -1,4 +1,8 @@
+<<<<<<< HEAD:public/js/charts/uncategorized_service_group_by_area_count.js
 var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/uncategorized_service_group_by_area_count.csv';
+=======
+var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/uncategorized_service_group_by_area_percent.csv';
+>>>>>>> 71a705f9008588b91da4759c808f30330390d5f6:js/charts/uncategorized_service_group_by_area_percent.js
 
 function uncategorizedServiceGroupByAreaCount() {
     Highcharts.chart('uncategorized-service-group-by-area-count', {

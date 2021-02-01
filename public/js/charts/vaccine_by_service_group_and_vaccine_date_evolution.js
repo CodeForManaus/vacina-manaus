@@ -1,12 +1,19 @@
-var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/uncategorized_service_group_by_vaccination_site_percent.csv';
+var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccine_by_service_group_and_vaccine_date_evolution.csv';
 
-function uncategorizedServiceGroupByVaccinationSitePercent() {
-    Highcharts.chart('uncategorized-service-group-by-vaccination-site-percent', {
+function vaccineByServiceGroupAndVaccineDateEvolution() {
+    Highcharts.chart('vaccine-by-service-group-and-vaccine-date-evolution-chart', {
         chart: {
-            type: 'bar'
+            type: 'line'
         },
         title: {
-            text: 'Porcentagem de categorizados como "Outros" por unidade de saúde'
+            text: 'Evolução do número de aplicações de vacinas por grupo de atendimento'
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+            }
         },
         accessibility: {
             announceNewData: {
@@ -29,4 +36,4 @@ function uncategorizedServiceGroupByVaccinationSitePercent() {
 }
 
 // Create the chart
-uncategorizedServiceGroupByVaccinationSitePercent();
+vaccineByServiceGroupAndVaccineDateEvolution();

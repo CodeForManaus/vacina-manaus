@@ -17,7 +17,7 @@
         <title>#VacinaManaus - Informações sobre a vacinação contra COVID-19 em Manaus - Dados sobre a vacinação</title>
 
         
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
 
         <script src="https://code.highcharts.com/highcharts.js"></script>
@@ -53,35 +53,39 @@
             </div>
         </nav>
         <div class="chart-div">
-            <figure class="highcharts-figure">
+            <figure class="highcharts-figure highcharts-figure-small">
                 <div id="vaccination-count-statistics-chart"></div>
             </figure>
 
-            <figure class="highcharts-figure">
+            <figure class="highcharts-figure highcharts-figure-small">
                 <div id="service-group-count-chart"></div>
             </figure>
 
-            <figure class="highcharts-figure">
+            <figure class="highcharts-figure highcharts-figure-large">
+                <div id="vaccine-by-service-group-and-vaccine-date-evolution-chart"></div>
+            </figure>
+
+            <figure class="highcharts-figure highcharts-figure-small">
                 <div id="vaccination-site-count-chart"></div>
             </figure>
         
-            <figure class="highcharts-figure">
+            <figure class="highcharts-figure highcharts-figure-small">
                 <div id="area-count-chart"></div>
             </figure>
 
-            <figure class="highcharts-figure">
+            <figure class="highcharts-figure highcharts-figure-small">
                 <div id="uncategorized-service-group-by-vaccination-site-percent"></div>
             </figure>
 
-            <figure class="highcharts-figure">
+            <figure class="highcharts-figure highcharts-figure-small">
                 <div id="uncategorized-service-group-by-area-percent"></div>
             </figure>
         
-            <figure class="highcharts-figure">
+            <figure class="highcharts-figure highcharts-figure-small">
                 <div id="vaccine-date-count-chart"></div>
             </figure>
 
-            <figure class="highcharts-figure">
+            <figure class="highcharts-figure highcharts-figure-small">
                 <div id="priority-group-count-chart"></div>
             </figure>
         </div>
@@ -100,6 +104,7 @@
     <script src="js/charts/uncategorized_service_group_by_vaccination_site_percent.js"></script>
     <script src="js/charts/vaccination_count_statistics.js"></script>
     <script src="js/charts/vaccination_site_count.js"></script>
+    <script src="js/charts/vaccine_by_service_group_and_vaccine_date_evolution.js"></script>
     <script src="js/charts/vaccine_date_count.js"></script>
 
 </html>

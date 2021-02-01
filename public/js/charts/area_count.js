@@ -1,9 +1,9 @@
-var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/area_count.csv';
+var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/area_count.csv';
 
 function areaCountChart() {
     Highcharts.chart('area-count-chart', {
         chart: {
-            type: 'pie'
+            type: 'bar'
         },
         title: {
             text: 'Vacinas aplicadas por zona (área) de Manaus'

@@ -1,9 +1,9 @@
-var defaultData = 'https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/service_group_count.csv';
+var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/service_group_count.csv';
 
 function serviceGroupCount() {
     Highcharts.chart('service-group-count-chart', {
         chart: {
-            type: 'pie'
+            type: 'bar'
         },
         title: {
             text: 'Vacinas aplicadas por grupo de atendimento'
