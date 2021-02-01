@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from './store'
-import { Provider } from 'react-redux';
+import VaccineContextProvider from './contexts/VaccineContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <VaccineContextProvider>
       <App />
-    </Provider>
+    </VaccineContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

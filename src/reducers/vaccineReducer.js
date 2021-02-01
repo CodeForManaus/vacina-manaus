@@ -1,12 +1,10 @@
-import { createStore } from 'redux'
-
 const INITIAL_STATE = {
   amountVaccineByArea: [],
   vaccinationByDate: [],
   vaccinationStatistics: []
 }
 
-function vaccineReducer(state= INITIAL_STATE, action) {
+export const vaccineReducer = (state= INITIAL_STATE, action) => {
   switch (action.type) {
     case 'FETCH_VACCINE_BY_AREA':
       return { ...state, amountVaccineByArea: action.amountVaccineByArea }
@@ -21,7 +19,3 @@ function vaccineReducer(state= INITIAL_STATE, action) {
       return state;
   }
 }
-
-const store = createStore(vaccineReducer)
-
-export default store

@@ -32,7 +32,7 @@ export default function VaccinesAtMoment({ vaccinesApplied }) {
       </Typography>
       <div>
       <Button
-        onClick={() => window.open("http://localhost:3000/metrics.html", "_self")}
+        onClick={() => window.open(process.env.REACT_APP_BASE_URL + "/metrics.html", "_self")}
         variant="contained"
         color="primary"
       >

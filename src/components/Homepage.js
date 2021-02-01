@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useCallback, useEffect, useState, useContext } from 'react'
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
@@ -25,6 +24,7 @@ import VaccinesRhythm from './VaccinesRhythm'
 import ConclusionTrend from './ConclusionTrend'
 import Copyright from './Copyright'
 import SidebarItems from './SidebarItems'
+import { VaccineContext } from '../contexts/VaccineContext';
 
 const VACCINE_TARGET = 70
 const drawerWidth = 240;
@@ -111,13 +111,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Homepage = () => {
   const classes = useStyles();
+  const { vaccine } = useContext(VaccineContext)
   const [openMenu, setOpenMenu] = useState(false);
   const [isLoading, setLoading] = useState(true)
   const [notification, setNotification] = useState({badge: 1, alert: false})
   const [avgVaccineDays, setAvgVaccineDays] = useState(0)
   const [remainingVaccineCount, setRemainingVaccineCount] = useState(0)
-  const vaccinationByDate = useSelector(state => state.vaccinationByDate)
-  const vaccinationStatistics = useSelector(state => state.vaccinationStatistics)
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   
   const fetchVaccineData = useCallback((vbd, vs) => {
@@ -134,12 +133,12 @@ const Homepage = () => {
 
   useEffect(() => {
     if (
-      vaccinationByDate.length > 0 &&
-      vaccinationStatistics.length > 0
+      vaccine.vaccinationByDate.length > 0 &&
+      vaccine.vaccinationStatistics.length > 0
     ) {
-      fetchVaccineData(vaccinationByDate, vaccinationStatistics)
+      fetchVaccineData(vaccine.vaccinationByDate, vaccine.vaccinationStatistics)
     }
-  }, [fetchVaccineData, vaccinationByDate, vaccinationStatistics])
+  }, [fetchVaccineData, vaccine])
 
   return(
     <div>
@@ -192,11 +191,11 @@ const Homepage = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6} lg={6}>
                   <Paper className={fixedHeightPaper}>
-                    <VaccinesAtMoment vaccinesApplied={vaccinationStatistics[0]["vaccinated"]} />
+                    <VaccinesAtMoment vaccinesApplied={vaccine.vaccinationStatistics[0]["vaccinated"]} />
                   </Paper>
                   <Paper className={fixedHeightPaper}>
                     <VaccinesRhythm
-                      begginigVaccination={vaccinationByDate[0]["vaccine_date"]}
+                      begginigVaccination={vaccine.vaccinationByDate[0]["vaccine_date"]}
                       avgVaccineDays={avgVaccineDays}
                     />
                   </Paper>
