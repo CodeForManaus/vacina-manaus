@@ -16,9 +16,9 @@ const App = () => {
   const dispatch = useDispatch()
 
   const fetchData = useCallback(async () => {
-    const vaccinationStatistics = await csv('https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccination_count_statistics.csv')
+    const vaccinationStatistics = await csv(`${process.env.REACT_APP_ANALYTICS_URL}/vaccination_count_statistics.csv`)
     delete vaccinationStatistics[0][""]
-    const vaccinationByDate = await csv('https://raw.githubusercontent.com/pvfrota/vacina-manaus/master/db/vaccine_date_count.csv')
+    const vaccinationByDate = await csv(`${process.env.REACT_APP_ANALYTICS_URL}/vaccine_date_count.csv`)
     dispatch({ type: "FETCH_VACCINATION_STATISTICS", vaccinationStatistics })
     dispatch({ type: "FETCH_VACCINATION_BY_DATE", vaccinationByDate })
   }, [dispatch]) 
