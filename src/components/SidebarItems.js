@@ -24,7 +24,8 @@ export default function SidebarItems() {
       </ListItem>
       <WhatsappShareButton
         style={{ color: "#075e54"}}
-        url={window.location.href}
+        title={"Compartilhe o #VacinaManaus:"}
+        url={"https://www.vacinamanaus.com"}
       >
         <ListItem >
           <ListItemIcon>
