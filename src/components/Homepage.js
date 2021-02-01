@@ -220,7 +220,7 @@ const Homepage = () => {
                 severity="success"
                 onClose={() => setNotification({...notification, alert: false })}
               >
-                Última atualização dos dados: 27/01/2021
+                Última atualização dos dados: 31/01/2021
               </MuiAlert>
             </Snackbar>
           </main>
