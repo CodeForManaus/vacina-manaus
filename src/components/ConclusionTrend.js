@@ -14,7 +14,7 @@ export default function ConclusionTrend({ vaccineTarget, daysLeft }) {
   return (
     <React.Fragment>
       <Typography component="h2" variant="h5" color="primary" gutterBottom>
-        Tendência de Conlusão
+        Tendência de conclusão
       </Typography>
       <Typography component="p" variant="h3">
       {daysLeft} dias
