@@ -21,20 +21,20 @@ export default function VaccinesAtMoment({ vaccinesApplied }) {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Typography component="h2" variant="h5" color="primary" gutterBottom>
-        Vacinas tomadas até o momento
+      <Typography component="h2" variant="h5" gutterBottom>
+        Vacinas aplicadas até o momento
       </Typography>
       <Typography component="p" variant="h3">
         {vaccinesApplied}
       </Typography>
-      <Typography color="textSecondary" className={classes.cardContext}>
+      <Typography className={classes.cardContext}>
         {new Date().toLocaleDateString(locale, option)}
       </Typography>
       <div>
       <Button
         onClick={() => window.open(process.env.REACT_APP_BASE_URL + "/metrics.html", "_self")}
         variant="contained"
-        color="primary"
+        style={{ color: "#1565c0", backgroundColor: "white", fontWeight: 600 }}
       >
         Ver mais
       </Button>

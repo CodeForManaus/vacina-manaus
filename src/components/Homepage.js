@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState, useContext } from 'react'
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -25,6 +25,7 @@ import ConclusionTrend from './ConclusionTrend'
 import Copyright from './Copyright'
 import SidebarItems from './SidebarItems'
 import { VaccineContext } from '../contexts/VaccineContext';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const VACCINE_TARGET = 70
 const drawerWidth = 240;
@@ -104,6 +105,11 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     flexDirection: 'column',
   },
+  cardPrimary: {
+    background: 'linear-gradient(#1565c0, #9198e5)',
+    color: 'white',
+    boxShadow: 'rgba(0, 0, 0, 0.75) 0px 1px 10px 1px'
+  },
   fixedHeight: {
     height: 240,
   },
@@ -111,12 +117,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Homepage = () => {
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
   const { vaccine } = useContext(VaccineContext)
   const [openMenu, setOpenMenu] = useState(false);
   const [isLoading, setLoading] = useState(true)
   const [notification, setNotification] = useState({badge: 1, alert: false})
   const [avgVaccineDays, setAvgVaccineDays] = useState(0)
   const [remainingVaccineCount, setRemainingVaccineCount] = useState(0)
+  const primaryPaper = clsx(classes.paper, classes.cardPrimary, classes.fixedHeight);
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
   
   const fetchVaccineData = useCallback((vbd, vs) => {
@@ -137,8 +146,9 @@ const Homepage = () => {
       vaccine.vaccinationStatistics.length > 0
     ) {
       fetchVaccineData(vaccine.vaccinationByDate, vaccine.vaccinationStatistics)
+      matches ? setOpenMenu(true) : setOpenMenu(false)
     }
-  }, [fetchVaccineData, vaccine])
+  }, [fetchVaccineData, vaccine, matches])
 
   return(
     <div>
@@ -190,7 +200,7 @@ const Homepage = () => {
             <Container maxWidth="xl" className={classes.container}>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6} lg={6}>
-                  <Paper className={fixedHeightPaper}>
+                  <Paper className={primaryPaper}>
                     <VaccinesAtMoment vaccinesApplied={vaccine.vaccinationStatistics[0]["vaccinated"]} />
                   </Paper>
                   <Paper className={fixedHeightPaper}>
