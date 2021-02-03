@@ -115,6 +115,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const option = {
+  year: 'numeric',
+  month: ('long' || 'short' || 'numeric'),
+  weekday: ('long' || 'short'),
+  day: 'numeric',
+}
+const locale = 'pt-br'
+
 const Homepage = () => {
   const classes = useStyles();
   const theme = useTheme();
@@ -230,7 +238,7 @@ const Homepage = () => {
                 severity="success"
                 onClose={() => setNotification({...notification, alert: false })}
               >
-                Última atualização dos dados: 31/01/2021
+                Última atualização dos dados: {new Date().toLocaleDateString(locale, option)}
               </MuiAlert>
             </Snackbar>
           </main>
