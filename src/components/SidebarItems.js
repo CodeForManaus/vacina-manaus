@@ -16,7 +16,7 @@ export default function SidebarItems() {
         </ListItemIcon>
         <ListItemText primary="Ínicio" />
       </ListItem>
-      <ListItem button onClick={() => window.open("/metrics.html", "_self")}>
+      <ListItem button onClick={() => window.open(process.env.REACT_APP_BASE_URL + "/metrics.html", "_self")}>
         <ListItemIcon>
           <BarChartIcon />
         </ListItemIcon>
@@ -24,7 +24,7 @@ export default function SidebarItems() {
       </ListItem>
       <WhatsappShareButton
         title={"Compartilhe o #VacinaManaus:"}
-        url={"https://www.vacinamanaus.com"}
+        url={"https://vacinamanaus.com"}
       >
         <ListItem >
           <ListItemIcon>
