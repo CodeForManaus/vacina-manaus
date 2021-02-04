@@ -1,72 +1,72 @@
 import { useCallback, useEffect, useState, useContext } from 'react'
-import clsx from 'clsx';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Drawer from '@material-ui/core/Drawer';
-import Paper from '@material-ui/core/Paper';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Divider from '@material-ui/core/Divider';
-import List from '@material-ui/core/List';
-import Snackbar from '@material-ui/core/Snackbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import MuiAlert from '@material-ui/lab/Alert';
+import clsx from 'clsx'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
+import Drawer from '@material-ui/core/Drawer'
+import Paper from '@material-ui/core/Paper'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Divider from '@material-ui/core/Divider'
+import List from '@material-ui/core/List'
+import Snackbar from '@material-ui/core/Snackbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import Badge from '@material-ui/core/Badge'
+import MenuIcon from '@material-ui/icons/Menu'
+import NotificationsIcon from '@material-ui/icons/Notifications'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import MuiAlert from '@material-ui/lab/Alert'
 import VaccinesAtMoment from './VaccinesAtMoment'
 import VaccinesRhythm from './VaccinesRhythm'
 import ConclusionTrend from './ConclusionTrend'
 import Copyright from './Copyright'
 import SidebarItems from './SidebarItems'
-import { VaccineContext } from '../contexts/VaccineContext';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { VaccineContext } from '../contexts/VaccineContext'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const VACCINE_TARGET = 70
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
+    paddingRight: 24 // keep right padding when drawer closed
   },
   toolbarIcon: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: '0 8px',
-    ...theme.mixins.toolbar,
+    ...theme.mixins.toolbar
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   menuButton: {
-    marginRight: 36,
+    marginRight: 36
   },
   menuButtonHidden: {
-    display: 'none',
+    display: 'none'
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 1
   },
   drawerPaper: {
     position: 'relative',
@@ -74,36 +74,36 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   drawerPaperClose: {
     overflowX: 'hidden',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
     width: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
-    },
+      width: theme.spacing(9)
+    }
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     height: '100vh',
-    overflow: 'auto',
+    overflow: 'auto'
   },
   container: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    paddingBottom: theme.spacing(4)
   },
   paper: {
     padding: theme.spacing(3),
     margin: 12,
     display: 'flex',
     overflow: 'auto',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   cardPrimary: {
     background: 'linear-gradient(#1565c0, #9198e5)',
@@ -111,42 +111,42 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: 'rgba(0, 0, 0, 0.75) 0px 1px 10px 1px'
   },
   fixedHeight: {
-    height: 240,
-  },
-}));
+    height: 240
+  }
+}))
 
 const option = {
   year: 'numeric',
   month: ('long' || 'short' || 'numeric'),
   weekday: ('long' || 'short'),
-  day: 'numeric',
+  day: 'numeric'
 }
 const locale = 'pt-br'
 
 const Homepage = () => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('md'));
+  const classes = useStyles()
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.up('md'))
   const { vaccine } = useContext(VaccineContext)
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false)
   const [isLoading, setLoading] = useState(true)
-  const [notification, setNotification] = useState({badge: 1, alert: false})
+  const [notification, setNotification] = useState({ badge: 1, alert: false })
   const [avgVaccineDays, setAvgVaccineDays] = useState(0)
   const [remainingVaccineCount, setRemainingVaccineCount] = useState(0)
-  const primaryPaper = clsx(classes.paper, classes.cardPrimary, classes.fixedHeight);
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-  
+  const primaryPaper = clsx(classes.paper, classes.cardPrimary, classes.fixedHeight)
+  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
+
   const fetchVaccineData = useCallback((vbd, vs) => {
     let amountOfDays = 0
     vbd.forEach(item => amountOfDays = amountOfDays + parseInt(item.count))
     setAvgVaccineDays((amountOfDays / vbd.length).toFixed(0))
-    setRemainingVaccineCount(parseInt((parseInt(vs[0]["estimated_population"])*VACCINE_TARGET/100-parseInt(vs[0]["estimated_non_vaccinated_percentage"])).toFixed(0)))
-    setLoading(false);
-  }, []) 
+    setRemainingVaccineCount(parseInt((parseInt(vs[0].estimated_population) * VACCINE_TARGET / 100 - parseInt(vs[0].estimated_non_vaccinated_percentage)).toFixed(0)))
+    setLoading(false)
+  }, [])
 
   const handleMenu = () => {
-    setOpenMenu(!openMenu);
-  };
+    setOpenMenu(!openMenu)
+  }
 
   useEffect(() => {
     if (
@@ -158,12 +158,12 @@ const Homepage = () => {
     }
   }, [fetchVaccineData, vaccine, matches])
 
-  return(
+  return (
     <div>
       {
-        isLoading ?
-        <div> Carregando... </div> :
-        <div className={classes.root}>
+        isLoading
+          ? <div> Carregando... </div>
+          : <div className={classes.root}>
           <CssBaseline />
           <AppBar position="absolute" className={clsx(classes.appBar, openMenu && classes.appBarShift)}>
             <Toolbar className={classes.toolbar}>
@@ -179,7 +179,7 @@ const Homepage = () => {
               <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                 #VacinaManaus
               </Typography>
-              <IconButton onClick={() => setNotification({badge: 0, alert: true})} color="inherit">
+              <IconButton onClick={() => setNotification({ badge: 0, alert: true })} color="inherit">
                 <Badge badgeContent={notification.badge} color="secondary">
                   <NotificationsIcon />
                 </Badge>
@@ -189,7 +189,7 @@ const Homepage = () => {
           <Drawer
             variant="permanent"
             classes={{
-              paper: clsx(classes.drawerPaper, !openMenu && classes.drawerPaperClose),
+              paper: clsx(classes.drawerPaper, !openMenu && classes.drawerPaperClose)
             }}
             open={openMenu}
           >
@@ -209,18 +209,18 @@ const Homepage = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6} lg={6}>
                   <Paper className={primaryPaper}>
-                    <VaccinesAtMoment vaccinesApplied={vaccine.vaccinationStatistics[0]["vaccinated"]} />
+                    <VaccinesAtMoment vaccinesApplied={vaccine.vaccinationStatistics[0].vaccinated} />
                   </Paper>
                   <Paper className={fixedHeightPaper}>
                     <VaccinesRhythm
-                      begginigVaccination={vaccine.vaccinationByDate[0]["vaccine_date"]}
+                      begginigVaccination={vaccine.vaccinationByDate[0].vaccine_date}
                       avgVaccineDays={avgVaccineDays}
                     />
                   </Paper>
                   <Paper className={fixedHeightPaper}>
                     <ConclusionTrend
                       vaccineTarget={VACCINE_TARGET}
-                      daysLeft={(remainingVaccineCount/avgVaccineDays).toFixed(0)}
+                      daysLeft={(remainingVaccineCount / avgVaccineDays).toFixed(0)}
                     />
                   </Paper>
                 </Grid>
@@ -232,11 +232,11 @@ const Homepage = () => {
             <Snackbar
               open={notification.alert}
               autoHideDuration={5000}
-              onClose={() => setNotification({...notification, alert: false })}
+              onClose={() => setNotification({ ...notification, alert: false })}
             >
               <MuiAlert
                 severity="success"
-                onClose={() => setNotification({...notification, alert: false })}
+                onClose={() => setNotification({ ...notification, alert: false })}
               >
                 Última atualização dos dados: {new Date().toLocaleDateString(locale, option)}
               </MuiAlert>

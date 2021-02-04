@@ -1,15 +1,15 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
   cardContext: {
-    flex: 1,
-  },
-});
+    flex: 1
+  }
+})
 
-export default function ConclusionTrend({ vaccineTarget, daysLeft }) {
-  const classes = useStyles();
+export default function ConclusionTrend ({ vaccineTarget, daysLeft }) {
+  const classes = useStyles()
 
   return (
     <React.Fragment>
@@ -22,7 +22,7 @@ export default function ConclusionTrend({ vaccineTarget, daysLeft }) {
       <Typography color="textSecondary" className={classes.cardContext}>
         Considerando o ritmo atual de vacinação e a meta de {vaccineTarget}% da população
       </Typography>
-      
+
     </React.Fragment>
-  );
+  )
 }

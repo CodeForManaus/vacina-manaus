@@ -1,15 +1,15 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
   cardContext: {
-    flex: 1,
-  },
-});
+    flex: 1
+  }
+})
 
-export default function VaccinesRhythm({ avgVaccineDays, begginigVaccination }) {
-  const classes = useStyles();
+export default function VaccinesRhythm ({ avgVaccineDays, begginigVaccination }) {
+  const classes = useStyles()
 
   return (
     <React.Fragment>
@@ -22,7 +22,7 @@ export default function VaccinesRhythm({ avgVaccineDays, begginigVaccination }) 
       <Typography color="textSecondary" className={classes.cardContext}>
       vacinas aplicadas por dia desde {begginigVaccination}
       </Typography>
-      
+
     </React.Fragment>
-  );
+  )
 }
