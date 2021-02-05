@@ -33,41 +33,41 @@ const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex'
+    display: 'flex',
   },
   toolbar: {
-    paddingRight: 24 // keep right padding when drawer closed
+    paddingRight: 24, // keep right padding when drawer closed
   },
   toolbarIcon: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: '0 8px',
-    ...theme.mixins.toolbar
+    ...theme.mixins.toolbar,
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
-    })
+      duration: theme.transitions.duration.leavingScreen,
+    }),
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   menuButton: {
-    marginRight: 36
+    marginRight: 36,
   },
   menuButtonHidden: {
-    display: 'none'
+    display: 'none',
   },
   title: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   drawerPaper: {
     position: 'relative',
@@ -75,52 +75,52 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen
-    })
+      duration: theme.transitions.duration.enteringScreen,
+    }),
   },
   drawerPaperClose: {
     overflowX: 'hidden',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen
+      duration: theme.transitions.duration.leavingScreen,
     }),
     width: theme.spacing(7),
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9)
-    }
+      width: theme.spacing(9),
+    },
   },
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     height: '100vh',
-    overflow: 'auto'
+    overflow: 'auto',
   },
   container: {
     paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4)
+    paddingBottom: theme.spacing(4),
   },
   paper: {
     padding: theme.spacing(3),
     margin: 12,
     display: 'flex',
     overflow: 'auto',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   cardPrimary: {
     background: 'linear-gradient(#1565c0, #9198e5)',
     color: 'white',
-    boxShadow: 'rgba(0, 0, 0, 0.75) 0px 1px 10px 1px'
+    boxShadow: 'rgba(0, 0, 0, 0.75) 0px 1px 10px 1px',
   },
   fixedHeight: {
-    height: 240
-  }
+    height: 240,
+  },
 }))
 
 const option = {
   year: 'numeric',
-  month: ('long' || 'short' || 'numeric'),
-  weekday: ('long' || 'short'),
-  day: 'numeric'
+  month: 'long' || 'short' || 'numeric',
+  weekday: 'long' || 'short',
+  day: 'numeric',
 }
 const locale = 'pt-br'
 
@@ -134,14 +134,27 @@ const Homepage = () => {
   const [notification, setNotification] = useState({ badge: 1, alert: false })
   const [avgVaccineDays, setAvgVaccineDays] = useState(0)
   const [remainingVaccineCount, setRemainingVaccineCount] = useState(0)
-  const primaryPaper = clsx(classes.paper, classes.cardPrimary, classes.fixedHeight)
+  const primaryPaper = clsx(
+    classes.paper,
+    classes.cardPrimary,
+    classes.fixedHeight
+  )
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   const fetchVaccineData = useCallback((vbd, vs) => {
     let amountOfDays = 0
-    vbd.forEach(item => { amountOfDays = amountOfDays + parseInt(item.count) })
+    vbd.forEach((item) => {
+      amountOfDays = amountOfDays + parseInt(item.count)
+    })
     setAvgVaccineDays((amountOfDays / vbd.length).toFixed(0))
-    setRemainingVaccineCount(parseInt((parseInt(vs[0].estimated_population) * VACCINE_TARGET / 100 - parseInt(vs[0].estimated_non_vaccinated_percentage)).toFixed(0)))
+    setRemainingVaccineCount(
+      parseInt(
+        (
+          (parseInt(vs[0].estimated_population) * VACCINE_TARGET) / 100 -
+          parseInt(vs[0].estimated_non_vaccinated_percentage)
+        ).toFixed(0)
+      )
+    )
     setLoading(false)
   }, [])
 
@@ -161,36 +174,54 @@ const Homepage = () => {
 
   return (
     <div>
-      {
-        isLoading
-          ? <div> Carregando... </div>
-          : <div className={classes.root}>
+      {isLoading ? (
+        <div> Carregando... </div>
+      ) : (
+        <div className={classes.root}>
           <CssBaseline />
-          <AppBar position="absolute" className={clsx(classes.appBar, openMenu && classes.appBarShift)}>
+          <AppBar
+            position='absolute'
+            className={clsx(classes.appBar, openMenu && classes.appBarShift)}
+          >
             <Toolbar className={classes.toolbar}>
               <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="open drawer"
+                edge='start'
+                color='inherit'
+                aria-label='open drawer'
                 onClick={handleMenu}
-                className={clsx(classes.menuButton, openMenu && classes.menuButtonHidden)}
+                className={clsx(
+                  classes.menuButton,
+                  openMenu && classes.menuButtonHidden
+                )}
               >
                 <MenuIcon />
               </IconButton>
-              <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+              <Typography
+                component='h1'
+                variant='h6'
+                color='inherit'
+                noWrap
+                className={classes.title}
+              >
                 #VacinaManaus
               </Typography>
-              <IconButton onClick={() => setNotification({ badge: 0, alert: true })} color="inherit">
-                <Badge badgeContent={notification.badge} color="secondary">
+              <IconButton
+                onClick={() => setNotification({ badge: 0, alert: true })}
+                color='inherit'
+              >
+                <Badge badgeContent={notification.badge} color='secondary'>
                   <NotificationsIcon />
                 </Badge>
               </IconButton>
             </Toolbar>
           </AppBar>
           <Drawer
-            variant="permanent"
+            variant='permanent'
             classes={{
-              paper: clsx(classes.drawerPaper, !openMenu && classes.drawerPaperClose)
+              paper: clsx(
+                classes.drawerPaper,
+                !openMenu && classes.drawerPaperClose
+              ),
             }}
             open={openMenu}
           >
@@ -206,22 +237,30 @@ const Homepage = () => {
           </Drawer>
           <main className={classes.content}>
             <div className={classes.appBarSpacer} />
-            <Container maxWidth="xl" className={classes.container}>
+            <Container maxWidth='xl' className={classes.container}>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6} lg={6}>
                   <Paper className={primaryPaper}>
-                    <VaccinesAtMoment vaccinesApplied={vaccine.vaccinationStatistics[0].vaccinated} />
+                    <VaccinesAtMoment
+                      vaccinesApplied={
+                        vaccine.vaccinationStatistics[0].vaccinated
+                      }
+                    />
                   </Paper>
                   <Paper className={fixedHeightPaper}>
                     <VaccinesRhythm
-                      begginigVaccination={vaccine.vaccinationByDate[0].vaccine_date}
+                      begginigVaccination={
+                        vaccine.vaccinationByDate[0].vaccine_date
+                      }
                       avgVaccineDays={avgVaccineDays}
                     />
                   </Paper>
                   <Paper className={fixedHeightPaper}>
                     <ConclusionTrend
                       vaccineTarget={VACCINE_TARGET}
-                      daysLeft={(remainingVaccineCount / avgVaccineDays).toFixed(0)}
+                      daysLeft={(
+                        remainingVaccineCount / avgVaccineDays
+                      ).toFixed(0)}
                     />
                   </Paper>
                 </Grid>
@@ -236,15 +275,18 @@ const Homepage = () => {
               onClose={() => setNotification({ ...notification, alert: false })}
             >
               <MuiAlert
-                severity="success"
-                onClose={() => setNotification({ ...notification, alert: false })}
+                severity='success'
+                onClose={() =>
+                  setNotification({ ...notification, alert: false })
+                }
               >
-                Última atualização dos dados: {new Date().toLocaleDateString(locale, option)}
+                Última atualização dos dados:{' '}
+                {new Date().toLocaleDateString(locale, option)}
               </MuiAlert>
             </Snackbar>
           </main>
         </div>
-      }
+      )}
     </div>
   )
 }

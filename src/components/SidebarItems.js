@@ -7,31 +7,38 @@ import HomeIcon from '@material-ui/icons/Home'
 import { WhatsappShareButton } from 'react-share'
 import WhatsAppIcon from '@material-ui/icons/WhatsApp'
 
-export default function SidebarItems () {
+export default function SidebarItems() {
   return (
     <div>
-      <ListItem button onClick={() => window.open(process.env.REACT_APP_BASE_URL, '_self')}>
+      <ListItem
+        button
+        onClick={() => window.open(process.env.REACT_APP_BASE_URL, '_self')}
+      >
         <ListItemIcon>
           <HomeIcon />
         </ListItemIcon>
-        <ListItemText primary="Ínicio" />
+        <ListItemText primary='Ínicio' />
       </ListItem>
-      <ListItem button onClick={() => window.open(process.env.REACT_APP_BASE_URL + '/metrics.html', '_self')}>
+      <ListItem
+        button
+        onClick={() =>
+          window.open(process.env.REACT_APP_BASE_URL + '/metrics.html', '_self')
+        }
+      >
         <ListItemIcon>
           <BarChartIcon />
         </ListItemIcon>
-        <ListItemText primary="Dados Atualizados" />
+        <ListItemText primary='Dados Atualizados' />
       </ListItem>
       <WhatsappShareButton
         title={'Compartilhe o #VacinaManaus:'}
         url={'https://vacinamanaus.com'}
       >
-        <ListItem >
+        <ListItem>
           <ListItemIcon>
             <WhatsAppIcon />
           </ListItemIcon>
-          <ListItemText primary="Compartilhar">
-          </ListItemText>
+          <ListItemText primary='Compartilhar'></ListItemText>
         </ListItem>
       </WhatsappShareButton>
     </div>

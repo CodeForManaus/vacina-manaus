@@ -1,38 +1,31 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
   },
   extends: [
+    'standard',
     'plugin:react/recommended',
-    'standard'
+    'plugin:prettier/recommended',
   ],
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: 'module'
+    sourceType: 'module',
   },
-  ignorePatterns: [
-    'build/',
-    'public/'
-  ],
-  plugins: [
-    'react'
-  ],
-  rules: {
-  },
+  ignorePatterns: ['build/', 'public/'],
+  plugins: ['react', 'prettier'],
+  rules: {},
   settings: {
     react: {
-      version: 'detect'
+      version: 'detect',
     },
     propWrapperFunctions: [
       'forbidExtraProps',
-      { property: 'freeze', object: 'Object' }
+      { property: 'freeze', object: 'Object' },
     ],
-    linkComponents: [
-      { name: 'Link', linkAttribute: 'to' }
-    ]
-  }
+    linkComponents: [{ name: 'Link', linkAttribute: 'to' }],
+  },
 }
