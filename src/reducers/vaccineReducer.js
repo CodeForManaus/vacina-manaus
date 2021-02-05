@@ -1,7 +1,7 @@
 const INITIAL_STATE = {
   amountVaccineByArea: [],
   vaccinationByDate: [],
-  vaccinationStatistics: []
+  vaccinationStatistics: [],
 }
 
 export const vaccineReducer = (state = INITIAL_STATE, action) => {

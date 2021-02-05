@@ -5,9 +5,9 @@ import Homepage from './components/Homepage'
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#1565c0'
-    }
-  }
+      main: '#1565c0',
+    },
+  },
 })
 
 const App = () => {

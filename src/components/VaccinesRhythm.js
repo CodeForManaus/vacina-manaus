@@ -6,30 +6,32 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles({
   cardContext: {
-    flex: 1
-  }
+    flex: 1,
+  },
 })
 
-export default function VaccinesRhythm ({ avgVaccineDays, begginigVaccination }) {
+export default function VaccinesRhythm({
+  avgVaccineDays,
+  begginigVaccination,
+}) {
   const classes = useStyles()
 
   return (
     <React.Fragment>
-      <Typography component="h2" variant="h5" color="primary" gutterBottom>
+      <Typography component='h2' variant='h5' color='primary' gutterBottom>
         Ritmo atual de vacinação
       </Typography>
-      <Typography component="p" variant="h3">
-      {avgVaccineDays}
+      <Typography component='p' variant='h3'>
+        {avgVaccineDays}
       </Typography>
-      <Typography color="textSecondary" className={classes.cardContext}>
-      vacinas aplicadas por dia desde {begginigVaccination}
+      <Typography color='textSecondary' className={classes.cardContext}>
+        vacinas aplicadas por dia desde {begginigVaccination}
       </Typography>
-
     </React.Fragment>
   )
 }
 
 VaccinesRhythm.propTypes = {
   avgVaccineDays: PropTypes.string,
-  begginigVaccination: PropTypes.string
+  begginigVaccination: PropTypes.string,
 }

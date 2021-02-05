@@ -10,14 +10,18 @@ const VaccineContextProvider = (props) => {
   const [vaccine, dispatch] = useReducer(vaccineReducer, [], () => {
     return {
       vaccinationStatistics: [],
-      vaccinationByDate: []
+      vaccinationByDate: [],
     }
   })
 
   const fetchData = useCallback(async () => {
-    const vaccinationStatistics = await csv(`${process.env.REACT_APP_ANALYTICS_URL}/vaccination_count_statistics.csv`)
+    const vaccinationStatistics = await csv(
+      `${process.env.REACT_APP_ANALYTICS_URL}/vaccination_count_statistics.csv`
+    )
     delete vaccinationStatistics[0]['']
-    const vaccinationByDate = await csv(`${process.env.REACT_APP_ANALYTICS_URL}/vaccine_date_count.csv`)
+    const vaccinationByDate = await csv(
+      `${process.env.REACT_APP_ANALYTICS_URL}/vaccine_date_count.csv`
+    )
     dispatch({ type: 'FETCH_VACCINATION_STATISTICS', vaccinationStatistics })
     dispatch({ type: 'FETCH_VACCINATION_BY_DATE', vaccinationByDate })
   }, [])
@@ -34,7 +38,7 @@ const VaccineContextProvider = (props) => {
 }
 
 VaccineContextProvider.propTypes = {
-  children: PropTypes.any
+  children: PropTypes.any,
 }
 
 export default VaccineContextProvider
