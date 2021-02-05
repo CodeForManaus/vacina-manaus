@@ -1,4 +1,6 @@
 import React, { createContext, useReducer, useEffect, useCallback } from 'react'
+import PropTypes from 'prop-types'
+
 import { csv } from 'd3'
 import { vaccineReducer } from '../reducers/vaccineReducer'
 
@@ -29,6 +31,10 @@ const VaccineContextProvider = (props) => {
       {props.children}
     </VaccineContext.Provider>
   )
+}
+
+VaccineContextProvider.propTypes = {
+  children: PropTypes.any
 }
 
 export default VaccineContextProvider

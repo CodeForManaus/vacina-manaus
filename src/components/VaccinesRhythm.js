@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
@@ -25,4 +27,9 @@ export default function VaccinesRhythm ({ avgVaccineDays, begginigVaccination })
 
     </React.Fragment>
   )
+}
+
+VaccinesRhythm.propTypes = {
+  avgVaccineDays: PropTypes.string,
+  begginigVaccination: PropTypes.string
 }

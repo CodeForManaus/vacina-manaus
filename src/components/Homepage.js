@@ -1,31 +1,32 @@
-import { useCallback, useEffect, useState, useContext } from 'react'
+import React, { useCallback, useEffect, useState, useContext } from 'react'
 import clsx from 'clsx'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
-import Drawer from '@material-ui/core/Drawer'
-import Paper from '@material-ui/core/Paper'
+
 import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Divider from '@material-ui/core/Divider'
-import List from '@material-ui/core/List'
-import Snackbar from '@material-ui/core/Snackbar'
-import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
 import Badge from '@material-ui/core/Badge'
-import MenuIcon from '@material-ui/icons/Menu'
-import NotificationsIcon from '@material-ui/icons/Notifications'
+import Box from '@material-ui/core/Box'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
+import ConclusionTrend from './ConclusionTrend'
+import Container from '@material-ui/core/Container'
+import Copyright from './Copyright'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Divider from '@material-ui/core/Divider'
+import Drawer from '@material-ui/core/Drawer'
+import Grid from '@material-ui/core/Grid'
+import IconButton from '@material-ui/core/IconButton'
+import List from '@material-ui/core/List'
+import MenuIcon from '@material-ui/icons/Menu'
 import MuiAlert from '@material-ui/lab/Alert'
+import NotificationsIcon from '@material-ui/icons/Notifications'
+import Paper from '@material-ui/core/Paper'
+import SidebarItems from './SidebarItems'
+import Snackbar from '@material-ui/core/Snackbar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
 import VaccinesAtMoment from './VaccinesAtMoment'
 import VaccinesRhythm from './VaccinesRhythm'
-import ConclusionTrend from './ConclusionTrend'
-import Copyright from './Copyright'
-import SidebarItems from './SidebarItems'
-import { VaccineContext } from '../contexts/VaccineContext'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { VaccineContext } from '../contexts/VaccineContext'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 
 const VACCINE_TARGET = 70
 const drawerWidth = 240
@@ -138,7 +139,7 @@ const Homepage = () => {
 
   const fetchVaccineData = useCallback((vbd, vs) => {
     let amountOfDays = 0
-    vbd.forEach(item => amountOfDays = amountOfDays + parseInt(item.count))
+    vbd.forEach(item => { amountOfDays = amountOfDays + parseInt(item.count) })
     setAvgVaccineDays((amountOfDays / vbd.length).toFixed(0))
     setRemainingVaccineCount(parseInt((parseInt(vs[0].estimated_population) * VACCINE_TARGET / 100 - parseInt(vs[0].estimated_non_vaccinated_percentage)).toFixed(0)))
     setLoading(false)
