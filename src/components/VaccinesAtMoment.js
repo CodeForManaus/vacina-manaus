@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
@@ -41,4 +43,8 @@ export default function VaccinesAtMoment ({ vaccinesApplied }) {
       </div>
     </React.Fragment>
   )
+}
+
+VaccinesAtMoment.propTypes = {
+  vaccinesApplied: PropTypes.string
 }
