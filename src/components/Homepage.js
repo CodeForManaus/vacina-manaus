@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar'
 import Badge from '@material-ui/core/Badge'
 import Box from '@material-ui/core/Box'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ConclusionTrend from './ConclusionTrend'
 import Container from '@material-ui/core/Container'
 import Copyright from './Copyright'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -23,12 +22,10 @@ import Snackbar from '@material-ui/core/Snackbar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import VaccinesAtMoment from './VaccinesAtMoment'
-import VaccinesRhythm from './VaccinesRhythm'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { VaccineContext } from '../contexts/VaccineContext'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 
-const VACCINE_TARGET = 70
 const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => ({
@@ -132,29 +129,17 @@ const Homepage = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const [isLoading, setLoading] = useState(true)
   const [notification, setNotification] = useState({ badge: 1, alert: false })
-  const [avgVaccineDays, setAvgVaccineDays] = useState(0)
-  const [remainingVaccineCount, setRemainingVaccineCount] = useState(0)
   const primaryPaper = clsx(
     classes.paper,
     classes.cardPrimary,
     classes.fixedHeight
   )
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
 
   const fetchVaccineData = useCallback((vbd, vs) => {
     let amountOfDays = 0
     vbd.forEach((item) => {
       amountOfDays = amountOfDays + parseInt(item.count)
     })
-    setAvgVaccineDays((amountOfDays / vbd.length).toFixed(0))
-    setRemainingVaccineCount(
-      parseInt(
-        (
-          (parseInt(vs[0].estimated_population) * VACCINE_TARGET) / 100 -
-          parseInt(vs[0].estimated_non_vaccinated_percentage)
-        ).toFixed(0)
-      )
-    )
     setLoading(false)
   }, [])
 
@@ -245,22 +230,6 @@ const Homepage = () => {
                       vaccinesApplied={
                         vaccine.vaccinationStatistics[0].vaccinated
                       }
-                    />
-                  </Paper>
-                  <Paper className={fixedHeightPaper}>
-                    <VaccinesRhythm
-                      begginigVaccination={
-                        vaccine.vaccinationByDate[0].vaccine_date
-                      }
-                      avgVaccineDays={avgVaccineDays}
-                    />
-                  </Paper>
-                  <Paper className={fixedHeightPaper}>
-                    <ConclusionTrend
-                      vaccineTarget={VACCINE_TARGET}
-                      daysLeft={(
-                        remainingVaccineCount / avgVaccineDays
-                      ).toFixed(0)}
                     />
                   </Paper>
                 </Grid>
