@@ -1,0 +1,44 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    name: Deploy application
+    runs-on: ubuntu-20.04
+
+    environment:
+      name: github-pages
+      url: https://vacinamanaus.com/
+
+    env:
+      REACT_APP_ANALYTICS_URL: ${{ secrets.REACT_APP_ANALYTICS_URL }}
+      REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test -- --passWithNoTests
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: crazy-max/ghaction-github-pages@v2
+        with:
+          build_dir: build
+          keep_history: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
