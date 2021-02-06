@@ -1,6 +1,6 @@
-const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccine_date_count.csv'
-
 function vaccineDateCount () {
+  const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccine_date_count.csv'
+
   Highcharts.chart('vaccine-date-count-chart', {
     chart: {
       type: 'column'

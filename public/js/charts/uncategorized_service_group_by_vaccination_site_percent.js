@@ -1,6 +1,6 @@
-const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/uncategorized_service_group_by_vaccination_site_percent.csv'
-
 function uncategorizedServiceGroupByVaccinationSitePercent () {
+  const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/uncategorized_service_group_by_vaccination_site_percent.csv'
+
   Highcharts.chart('uncategorized-service-group-by-vaccination-site-percent', {
     chart: {
       type: 'bar'
