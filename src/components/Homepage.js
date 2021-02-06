@@ -154,99 +154,95 @@ const Homepage = () => {
     }
   }, [fetchVaccineData, vaccine])
 
+  if (isLoading) {
+    return <div> Carregando... </div>
+  }
+
   return (
-    <div>
-      {isLoading ? (
-        <div> Carregando... </div>
-      ) : (
-        <div className={classes.root}>
-          <CssBaseline />
-          <AppBar
-            position='absolute'
-            className={clsx(classes.appBar, openMenu && classes.appBarShift)}
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar
+        position='absolute'
+        className={clsx(classes.appBar, openMenu && classes.appBarShift)}
+      >
+        <Toolbar className={classes.toolbar}>
+          <IconButton
+            edge='start'
+            color='inherit'
+            aria-label='open drawer'
+            onClick={handleMenu}
+            className={clsx(
+              classes.menuButton,
+              openMenu && classes.menuButtonHidden
+            )}
           >
-            <Toolbar className={classes.toolbar}>
-              <IconButton
-                edge='start'
-                color='inherit'
-                aria-label='open drawer'
-                onClick={handleMenu}
-                className={clsx(
-                  classes.menuButton,
-                  openMenu && classes.menuButtonHidden
-                )}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography
-                component='h1'
-                variant='h6'
-                color='inherit'
-                noWrap
-                className={classes.title}
-              >
-                #VacinaManaus
-              </Typography>
-              <IconButton
-                onClick={() => setNotification({ badge: 0, alert: true })}
-                color='inherit'
-              >
-                <Badge badgeContent={notification.badge} color='secondary'>
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-          <Drawer
-            anchor='left'
-            classes={{
-              paper: clsx(
-                classes.drawerPaper,
-                !openMenu && classes.drawerPaperClose
-              ),
-            }}
-            open={openMenu}
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            component='h1'
+            variant='h6'
+            color='inherit'
+            noWrap
+            className={classes.title}
           >
-            <div className={classes.toolbarIcon}>
-              <IconButton onClick={handleMenu}>
-                <ChevronLeftIcon />
-              </IconButton>
-            </div>
-            <Divider />
-            <List>
-              <SidebarItems />
-            </List>
-          </Drawer>
-          <main className={classes.content}>
-            <div className={classes.appBarSpacer} />
-            <Container maxWidth='sm' className={classes.container}>
-              <Paper className={primaryPaper}>
-                <VaccinesAtMoment
-                  vaccinesApplied={vaccine.vaccinationStatistics[0].vaccinated}
-                />
-              </Paper>
-              <Box pt={4}>
-                <Copyright />
-              </Box>
-            </Container>
-            <Snackbar
-              open={notification.alert}
-              autoHideDuration={5000}
-              onClose={() => setNotification({ ...notification, alert: false })}
-            >
-              <MuiAlert
-                severity='success'
-                onClose={() =>
-                  setNotification({ ...notification, alert: false })
-                }
-              >
-                Última atualização dos dados:{' '}
-                {new Date().toLocaleDateString(locale, option)}
-              </MuiAlert>
-            </Snackbar>
-          </main>
+            #VacinaManaus
+          </Typography>
+          <IconButton
+            onClick={() => setNotification({ badge: 0, alert: true })}
+            color='inherit'
+          >
+            <Badge badgeContent={notification.badge} color='secondary'>
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        anchor='left'
+        classes={{
+          paper: clsx(
+            classes.drawerPaper,
+            !openMenu && classes.drawerPaperClose
+          ),
+        }}
+        open={openMenu}
+      >
+        <div className={classes.toolbarIcon}>
+          <IconButton onClick={handleMenu}>
+            <ChevronLeftIcon />
+          </IconButton>
         </div>
-      )}
+        <Divider />
+        <List>
+          <SidebarItems />
+        </List>
+      </Drawer>
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth='sm' className={classes.container}>
+          <Paper className={primaryPaper}>
+            <VaccinesAtMoment
+              vaccinesApplied={vaccine.vaccinationStatistics[0].vaccinated}
+            />
+          </Paper>
+          <Box pt={4}>
+            <Copyright />
+          </Box>
+        </Container>
+        <Snackbar
+          open={notification.alert}
+          autoHideDuration={5000}
+          onClose={() => setNotification({ ...notification, alert: false })}
+        >
+          <MuiAlert
+            severity='success'
+            onClose={() => setNotification({ ...notification, alert: false })}
+          >
+            Última atualização dos dados:{' '}
+            {new Date().toLocaleDateString(locale, option)}
+          </MuiAlert>
+        </Snackbar>
+      </main>
     </div>
   )
 }
