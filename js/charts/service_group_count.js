@@ -1,6 +1,6 @@
-const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/service_group_count.csv'
-
 function serviceGroupCount () {
+  const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/service_group_count.csv'
+
   Highcharts.chart('service-group-count-chart', {
     chart: {
       type: 'bar'

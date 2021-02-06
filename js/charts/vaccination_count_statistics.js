@@ -1,6 +1,6 @@
-const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccination_count.csv'
-
 function vaccinationCountStatistics () {
+  const defaultData = `${process.env.REACT_APP_ANALYTICS_URL}/vaccination_count.csv`
+
   Highcharts.chart('vaccination-count-statistics-chart', {
     chart: {
       type: 'bar'

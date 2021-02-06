@@ -1,6 +1,6 @@
-const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/area_count.csv'
-
 function areaCountChart () {
+  const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/area_count.csv'
+
   Highcharts.chart('area-count-chart', {
     chart: {
       type: 'bar'
