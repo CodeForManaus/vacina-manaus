@@ -1,12 +1,12 @@
-function vaccinationCountStatistics () {
-  const defaultData = `${process.env.REACT_APP_ANALYTICS_URL}/vaccination_count.csv`
+function vaccinationCountStatistics() {
+  const defaultData = `https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccination_count.csv`
 
   Highcharts.chart('vaccination-count-statistics-chart', {
     chart: {
-      type: 'bar'
+      type: 'bar',
     },
     title: {
-      text: 'Vacinas aplicadas x A aplicar (estimado)'
+      text: 'Vacinas aplicadas x A aplicar (estimado)',
     },
     accessibility: {
       announceNewData: {
@@ -17,14 +17,14 @@ function vaccinationCountStatistics () {
             return 'New point added. Value: ' + newPoint.y
           }
           return false
-        }
-      }
+        },
+      },
     },
     data: {
       csvURL: defaultData,
       enablePolling: true,
-      dataRefreshRate: 10
-    }
+      dataRefreshRate: 10,
+    },
   })
 }
 
