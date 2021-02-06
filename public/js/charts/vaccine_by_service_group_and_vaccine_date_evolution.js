@@ -1,6 +1,6 @@
-const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccine_by_service_group_and_vaccine_date_evolution.csv'
-
 function vaccineByServiceGroupAndVaccineDateEvolution () {
+  const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccine_by_service_group_and_vaccine_date_evolution.csv'
+
   Highcharts.chart('vaccine-by-service-group-and-vaccine-date-evolution-chart', {
     chart: {
       type: 'line'
