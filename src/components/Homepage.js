@@ -10,7 +10,6 @@ import Copyright from './Copyright'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Divider from '@material-ui/core/Divider'
 import Drawer from '@material-ui/core/Drawer'
-import Grid from '@material-ui/core/Grid'
 import IconButton from '@material-ui/core/IconButton'
 import List from '@material-ui/core/List'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -22,9 +21,8 @@ import Snackbar from '@material-ui/core/Snackbar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import VaccinesAtMoment from './VaccinesAtMoment'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { VaccineContext } from '../contexts/VaccineContext'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 
 const drawerWidth = 240
 
@@ -95,6 +93,7 @@ const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
+    minWidth: 320,
   },
   paper: {
     padding: theme.spacing(3),
@@ -107,9 +106,10 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(#1565c0, #9198e5)',
     color: 'white',
     boxShadow: 'rgba(0, 0, 0, 0.75) 0px 1px 10px 1px',
+    textAlign: 'center',
   },
   fixedHeight: {
-    height: 240,
+    minHeight: 240,
   },
 }))
 
@@ -123,8 +123,6 @@ const locale = 'pt-br'
 
 const Homepage = () => {
   const classes = useStyles()
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.up('md'))
   const { vaccine } = useContext(VaccineContext)
   const [openMenu, setOpenMenu] = useState(false)
   const [isLoading, setLoading] = useState(true)
@@ -153,9 +151,8 @@ const Homepage = () => {
       vaccine.vaccinationStatistics.length > 0
     ) {
       fetchVaccineData(vaccine.vaccinationByDate, vaccine.vaccinationStatistics)
-      matches ? setOpenMenu(true) : setOpenMenu(false)
     }
-  }, [fetchVaccineData, vaccine, matches])
+  }, [fetchVaccineData, vaccine])
 
   return (
     <div>
@@ -201,7 +198,7 @@ const Homepage = () => {
             </Toolbar>
           </AppBar>
           <Drawer
-            variant='permanent'
+            anchor='left'
             classes={{
               paper: clsx(
                 classes.drawerPaper,
@@ -222,18 +219,12 @@ const Homepage = () => {
           </Drawer>
           <main className={classes.content}>
             <div className={classes.appBarSpacer} />
-            <Container maxWidth='xl' className={classes.container}>
-              <Grid container spacing={3}>
-                <Grid item xs={12} md={6} lg={6}>
-                  <Paper className={primaryPaper}>
-                    <VaccinesAtMoment
-                      vaccinesApplied={
-                        vaccine.vaccinationStatistics[0].vaccinated
-                      }
-                    />
-                  </Paper>
-                </Grid>
-              </Grid>
+            <Container maxWidth='sm' className={classes.container}>
+              <Paper className={primaryPaper}>
+                <VaccinesAtMoment
+                  vaccinesApplied={vaccine.vaccinationStatistics[0].vaccinated}
+                />
+              </Paper>
               <Box pt={4}>
                 <Copyright />
               </Box>
