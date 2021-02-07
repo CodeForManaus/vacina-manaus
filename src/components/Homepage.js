@@ -58,7 +58,7 @@ const Homepage = () => {
     <Page isLoading={isLoading}>
       <Paper className={primaryPaper}>
         <VaccinesAtMoment
-          vaccinesApplied={vaccine.vaccinationStatistics[0].vaccinated}
+          vaccinesApplied={vaccine?.vaccinationStatistics?.[0]?.vaccinated}
         />
       </Paper>
     </Page>
