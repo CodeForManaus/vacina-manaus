@@ -25,6 +25,7 @@ import VaccinesAtMoment from './VaccinesAtMoment'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { VaccineContext } from '../contexts/VaccineContext'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
+import Chart from '../graphics/components/Chart'
 
 const drawerWidth = 240
 
@@ -232,6 +233,7 @@ const Homepage = () => {
                       }
                     />
                   </Paper>
+                  <Chart />
                 </Grid>
               </Grid>
               <Box pt={4}>
