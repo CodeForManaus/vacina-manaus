@@ -16,7 +16,7 @@ This website was made with:
 - `npm run start` to run locally (PORT 3000 by default)
 
 - create `.env` with those variables
-> REACT_APP_ANALYTICS_URL=https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics
+> REACT_APP_ANALYTICS_URL=https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/data/analyzed
 > REACT_APP_BASE_URL=https://www.vacinamanaus.com
 
 use http://localhost:3000 for BASE_URL to run locally
