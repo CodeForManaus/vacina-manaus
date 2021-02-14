@@ -14,7 +14,7 @@ $(document).ready(function () {
   $('#vaccine-target2').text(vaccineTarget)
 
   $.ajax({
-    url:'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/last_update_date.csv',
+    url:'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/data/analyzed/last_update_date.csv',
     type:'get',
     dataType:'text',
     success: function(data){
@@ -25,7 +25,7 @@ $(document).ready(function () {
   })
 
   $.ajax({
-    url: 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccination_count_statistics.csv',
+    url: 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/data/analyzed/vaccination_count_statistics.csv',
     type: 'get',
     dataType: 'text',
     success: function (data) {
@@ -41,7 +41,7 @@ $(document).ready(function () {
   })
 
   $.ajax({
-    url: 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccine_date_count.csv',
+    url: 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/data/analyzed/vaccine_date_count.csv',
     type: 'get',
     dataType: 'text',
     success: function (data) {
