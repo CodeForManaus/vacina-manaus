@@ -1,5 +1,5 @@
 function serviceGroupCount () {
-  const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/service_group_count.csv'
+  const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/data/analyzed/service_group_count.csv'
 
   Highcharts.chart('service-group-count-chart', {
     chart: {
