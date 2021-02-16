@@ -1,5 +1,5 @@
 function vaccinationSiteCount () {
-  const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/vaccination_site_count.csv'
+  const defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/data/analyzed/vaccination_site_count.csv'
 
   Highcharts.chart('vaccination-site-count-chart', {
     chart: {

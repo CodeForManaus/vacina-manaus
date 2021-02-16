@@ -1,6 +1,6 @@
 
 function priorityGroupCount () {
-  var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/analytics/priority_group_count.csv'
+  var defaultData = 'https://raw.githubusercontent.com/CodeForManaus/vacina-manaus-backend/master/data/analyzed/priority_group_count.csv'
 
   Highcharts.chart('priority-group-count-chart', {
     chart: {
