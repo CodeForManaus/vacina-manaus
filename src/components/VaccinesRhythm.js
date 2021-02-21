@@ -10,28 +10,28 @@ const useStyles = makeStyles({
   },
 })
 
-export default function VaccinesRhythm({
-  avgVaccineDays,
-  begginigVaccination,
-}) {
+export default function VaccinesRhythm({ avgVaccineDays }) {
   const classes = useStyles()
+  const { moving_avg_3_days: movingAvg, vaccine_date: date } = avgVaccineDays
 
   return (
     <React.Fragment>
-      <Typography component='h2' variant='h5' color='primary' gutterBottom>
+      <Typography component='h2' variant='h5' gutterBottom>
         Ritmo atual de vacinação
       </Typography>
       <Typography component='p' variant='h3'>
-        {avgVaccineDays}
+        {movingAvg}
       </Typography>
-      <Typography color='textSecondary' className={classes.cardContext}>
-        vacinas aplicadas por dia desde {begginigVaccination}
+      <Typography className={classes.cardContext}>
+        Média de vacinação dos últimos 3 dias
+      </Typography>
+      <Typography component='p' variant='subtitle2'>
+        Última atualização dia {date}
       </Typography>
     </React.Fragment>
   )
 }
 
 VaccinesRhythm.propTypes = {
-  avgVaccineDays: PropTypes.string,
-  begginigVaccination: PropTypes.string,
+  avgVaccineDays: PropTypes.object,
 }

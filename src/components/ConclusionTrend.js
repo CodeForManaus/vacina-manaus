@@ -10,26 +10,28 @@ const useStyles = makeStyles({
   },
 })
 
-export default function ConclusionTrend({ vaccineTarget, daysLeft }) {
+export default function ConclusionTrend({ vaccineTrend }) {
   const classes = useStyles()
+  const { trend_3_days: daysLeft, vaccine_date: date } = vaccineTrend
 
   return (
     <React.Fragment>
-      <Typography component='h2' variant='h5' color='primary' gutterBottom>
+      <Typography component='h2' variant='h5' gutterBottom>
         Tendência de conclusão
       </Typography>
       <Typography component='p' variant='h3'>
         {daysLeft} dias
       </Typography>
-      <Typography color='textSecondary' className={classes.cardContext}>
-        Considerando o ritmo atual de vacinação e a meta de {vaccineTarget}% da
-        população
+      <Typography className={classes.cardContext}>
+        Considerando o ritmo atual de vacinação e a meta de 70% da população
+      </Typography>
+      <Typography component='p' variant='subtitle2'>
+        Última atualização dia {date}
       </Typography>
     </React.Fragment>
   )
 }
 
 ConclusionTrend.propTypes = {
-  vaccineTarget: PropTypes.number,
-  daysLeft: PropTypes.string,
+  vaccineTrend: PropTypes.object,
 }
