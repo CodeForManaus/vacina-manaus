@@ -202,7 +202,7 @@ const Page = ({ children, isLoading = false }) => {
 }
 
 Page.propTypes = {
-  children: PropTypes.Node,
+  children: PropTypes.any,
   isLoading: PropTypes.bool,
 }
 
